@@ -8,10 +8,9 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-    <input type="radio" name="test" value="1">
-    <input type="radio" name="test" value="2">
-    <input type="radio" name="test" value="3">
-    <input type="submit" value="confirm" onclick="toggleRadio()">
+    <input type="radio" name="test" value="1" data-previous="">
+    <input type="radio" name="test" value="2" data-previous="">
+    <input type="radio" name="test" value="3" data-previous="">
 
     <script>
         /** by jquery*/
@@ -35,13 +34,24 @@
         // });
         
         /** by js*/
-       function toggleRadio() {
-        const test = document.getElementsByName('test');
-        test.forEach((e)=>{
-                e.checked = e.checked && false;
-        })
-       }
+       document.addEventListener("DOMContentLoaded",function(){
+           const test = document.getElementsByName('test');
+           test.forEach((e)=>{
+                   if(e.target.value) e.dataset.previous = e.target.value;
+           })
+           test.addEventListener('click',function(e){
+               let pre = e.target.dataset.previous;
+               if(e.target.value && pre == e.target.value) {
+                   e.target.value = false;
+                   pre = "";
+               } else {
+                   if(e.target.value) test.dataset.previous = e.target.value;
+               }
+           })
+       })
 
+    // const test = document.getElementsByName('test');
+    // console.log(test);
     </script>
 </body>
 </html>
