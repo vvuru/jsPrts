@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <input type="radio" name="test" value="1">
+    <input type="radio" name="test" value="2">
+    <input type="radio" name="test" value="3">
+    <input type="submit" value="confirm" onclick="toggleRadio()">
+
+    <script>
+        /** by jquery*/
+        // $(function(){
+        //     $("input[type=radio]").each(function(){
+        //     var chk = $(this).is(":checked");
+        //     var name = $(this).attr('name');
+        //     if(chk == true) $("input[name='"+name+"']").data("previous",$(this).val());
+        //     });
+        //     $("input[type=radio]").click(function(){
+        //     var pre = $(this).data("previous");
+        //     var chk = $(this).is(":checked");
+        //     var name = $(this).attr('name');
+        //     if(chk == true && pre == $(this).val()){
+        //         $(this).prop('checked',false);
+        //         $("input[name='"+name+"']").data("previous",'');
+        //     }else{
+        //         if(chk == true) $("input[name='"+name+"']").data("previous",$(this).val());
+        //     }
+        //     });
+        // });
+        
+        /** by js*/
+       function toggleRadio() {
+        const test = document.getElementsByName('test');
+        test.forEach((e)=>{
+                e.checked = e.checked && false;
+        })
+       }
+
+    </script>
+</body>
+</html>
